@@ -18,7 +18,7 @@ Discussion forum made with PHP using ToroPHP and Twig as a template engine. It i
    $ cd Readit
    $ composer init
    ```
-Make sure you have composer installed, if not refer to [this link](https://getcomposer.org/download/)
+   Make sure you have composer installed, if not refer to [this link](https://getcomposer.org/download/)
 3. On running the `init` command you'll find `composer.json` file. Add the following lines to the json file:
    ```json
    "require": {
@@ -31,7 +31,7 @@ Make sure you have composer installed, if not refer to [this link](https://getc
         ]
     }
    ```
-The `require` part includes ToroPHP and Twig, `autoload` part includes all the classes inside `app` folder.
+   The `require` part includes ToroPHP and Twig, `autoload` part includes all the classes inside `app` folder.
 4. Now run the following commands:
    ```sh
    $ composer install

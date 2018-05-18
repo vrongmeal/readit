@@ -1,0 +1,311 @@
+/* Fonts */
+@font-face {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Inconsolata Regular'), local('Inconsolata-Regular'), url(https://fonts.gstatic.com/s/inconsolata/v16/QldKNThLqRwH-OJ1UHjlKGlZ5qhExfHw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(https://fonts.gstatic.com/s/inconsolata/v16/QldXNThLqRwH-OJ1UHjlKGHiw71p5_zaDpwm.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Nunito';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Nunito Italic'), local('Nunito-Italic'), url(https://fonts.gstatic.com/s/nunito/v9/XRXX3I6Li01BKofIMNaDRs7nczIH.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Nunito Light'), local('Nunito-Light'), url(https://fonts.gstatic.com/s/nunito/v9/XRXW3I6Li01BKofAnsSUYevIWzgPDA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Nunito Regular'), local('Nunito-Regular'), url(https://fonts.gstatic.com/s/nunito/v9/XRXV3I6Li01BKofINeaBTMnFcQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Nunito Bold'), local('Nunito-Bold'), url(https://fonts.gstatic.com/s/nunito/v9/XRXW3I6Li01BKofAjsOUYevIWzgPDA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Reset */
+body, div, p, span, h1, h2, h3, a, ol, ul, li, form, label, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+/* Main */
+html {
+    font: 400 16px "Nunito";
+    height: 100%;
+    width: 100%;
+}
+body {
+    line-height: 1;
+    height: 100%;
+    width: 100%;
+    background-color: #e9e9e9;
+}
+div, p {
+    display: block;
+}
+span {
+    display: inline;
+}
+ol, ul {
+    list-style: none;
+}
+input, textarea, button {
+    vertical-align: middle;
+    font: 1rem "Nunito";
+}
+
+/* Common */
+.header {
+    width: 100%;
+    background-color: rgb(62, 0, 62);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+
+}
+.container {
+    display: flex;
+    width: 980px;
+    margin: 0 auto;
+}
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: block;
+    font: 700 2rem "Inconsolata";
+    padding: .75rem 0;
+    color: #f9f9f9;
+    text-decoration: none;
+    color: #f9f9f9;
+}
+.logo:focus {
+    outline: .0625rem dashed #f9f9f9;
+}
+.links a {
+    color: #f9f9f9;
+    display: inline-block;
+    padding: .5rem .75rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+.links a.button {
+    color: rgb(62, 0, 62);
+    background-color: rgb(0, 255, 126);
+    border-radius: .125rem;
+}
+.links a:hover, .links a:focus {
+    text-decoration: underline;
+}
+.links a.button:hover, .links a.button:focus {
+    background-color: rgb(252, 0, 62);
+    color: #f9f9f9;
+    text-decoration: none;
+}
+#main-content {
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+}
+.main {
+    margin: 5rem 0 0;
+}
+.main .container {
+    justify-content: space-between;
+}
+.sidebar {
+    width: 36%;
+}
+.content {
+    width: 62%;
+}
+.box {
+    border: .0625rem solid #ccc;
+    margin-bottom: 2rem;
+    width: 100%;
+    background: #f9f9f9;
+    border-radius: .25rem;
+}
+.box h1 {
+    font-size: 1.625rem;
+    font-weight: 700;
+    display: block;
+    padding: .75rem .75rem;
+    background: #e9e9e9;
+    color: #f9f9f9;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background: #444;
+}
+.box li {
+    display: block;
+    width: 100%;
+    padding: .5rem .75rem;
+}
+.box li:nth-child(2n+1) {
+    background: transparent;
+}
+.box li:nth-child(2n) {
+    background: #e9e9e9;
+}
+.box li:last-child {
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+.box li .rank {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: .5rem;
+}
+.box li .rank::before {
+    content: '#';
+}
+.box li .title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: .5rem;
+    display: block;
+    text-decoration: none;
+    color: rgb(62, 0, 62);
+}
+.box li .title:hover {
+    text-decoration: underline;
+}
+.box li .details {
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.box li .details .user {
+    font-size: .9rem;
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+    text-decoration: #666 dotted underline;
+}
+.box li .details .user:hover {
+    text-decoration: #000 solid underline;
+}
+.box li .details .votes {
+    display: inline-block;
+    background: rgba(0, 0, 0, .1);
+    padding: .25rem;
+    border-radius: .125rem;
+    font-size: .75rem;
+    color: #666;
+}
+.box .nothing {
+    padding: 1rem .75rem;
+}
+
+.sidebox {
+    width: 100%;
+    border-radius: .25rem;
+    background: #f9f9f9;
+    margin-bottom: 1.5rem;
+}
+.sidebox h1 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: .5rem .75rem;
+    border-bottom: .0625rem solid #ccc;
+    font-weight: 300;
+    text-align: center;
+}
+.sidebox li {
+    padding: .5rem .75rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.sidebox .title {
+    width: 80%;
+    display: block;
+    font-size: .9rem;
+    text-decoration: none;
+    font-style: italic;
+    color: rgb(62, 0, 62);
+}
+.sidebox .title:hover {
+    text-decoration: underline;
+}
+.sidebox .votes {
+    display: block;
+    background: rgba(0, 0, 0, .1);
+    padding: .25rem;
+    border-radius: .125rem;
+    font-size: .75rem;
+    color: #666;
+    width: auto;
+    max-height: 1.25rem;
+}
+.sidebox .viewmore {
+    border-top: .0625rem solid #e9e9e9;
+    padding: .5rem .75rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: .75rem;
+    text-decoration: none;
+    color: #444;
+}
+.sidebox .viewmore:hover {
+    text-decoration: underline;
+}
+.sidebox .nothing {
+    padding: .75rem;
+}
+
+.popup-overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, .6);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+}
+.popup-content {
+    top: 5.5rem;
+    z-index: 12;
+    position: absolute;
+    width: 100%;
+}
+.popup-content .form-container {
+    box-shadow: 0 .125rem 1rem #777;
+}
+#new-popup {
+    display: none;
+}
+#main-content {
+    overflow: scroll;
+}

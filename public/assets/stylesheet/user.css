@@ -1,0 +1,78 @@
+.user {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.user .stars {
+    padding: .5rem;
+    border-radius: .125rem;
+    font-size: .9rem;
+    color: #444;
+    background: #ccc;
+    display: inline-block;
+    margin: 0 0 1.5rem;
+}
+.user .score {
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    color: #444;
+}
+.user h2 {
+    font-size: 3rem;
+    margin: 0 0 1.5rem;
+    font-weight: 300;
+    color: rgb(62, 0, 62);
+    display: block;
+}
+.user .follow-tab {
+    display: inline-block;
+    margin: 0 0 1.5rem;
+}
+.follow-tab a {
+    padding: .5rem .75rem;
+    text-decoration: none;
+    border-radius: .25rem;
+    opacity: .85;
+    text-align: center;
+    width: 7rem;
+    display: inline-block;
+    margin-right: .5rem;
+}
+.follow-tab a.not-follow {
+    color: #f9f9f9;
+    background: rgb(62, 0, 62);
+}
+.not-follow::after {
+    content: "Follow";
+}
+.follow-tab a.following {
+    color: #f9f9f9;
+    background: rgb(252, 0, 62);
+}
+.following::after {
+    content: "Following";
+}
+.follow-tab a:hover, .follow-tab a:focus {
+    opacity: 1;
+}
+.following:hover::after {
+    content: "Unfollow";
+}
+.follow-tab .tab-info {
+    padding: .5rem .75rem;
+    display: inline-block;
+    background: #ccc;
+    color: #000;
+}
+.follow-tab .tab-info {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    border-right: .0625rem solid #999;
+}
+.follow-tab .tab-info:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    border-right: 0;
+}

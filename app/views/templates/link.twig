@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ link.title }} - Readit</title>
+    <link rel="stylesheet" href="/assets/stylesheet/main.css">
+    <link rel="stylesheet" href="/assets/stylesheet/forms.css">
+    <link rel="stylesheet" href="/assets/stylesheet/link.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="main-content">
+        <div class="header">
+            <div class="container">
+                <a href="/" class="logo">Readit</a>
+                <div class="links">
+                    <a href="/">Home</a>
+                        {% if session_user %}
+                            <a href="/feed">Personal Feed</a>
+                            <a href="/user/{{ session_user }}">@{{ session_user }}</a>
+                            <a href="/user/logout">Logout</a>
+                            <a href="#" class="button" id="new-button">+ New</a>
+                        {% else %}
+                            <a href="/user/signin" class="button">Sign in</a>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container link">
+                <p class="tags">
+                    {% for tag in tags %}
+                        <a href="/tag/{{ tag.tag }}">#{{ tag.tag }}</a>
+                    {% endfor %}
+                </p>
+                <h2>{{ link.title }}</h2>
+                <p>Posted by <a href="/user/{{ link.username }}" class="user">@{{ link.username }}</a> at {{ link.time }}</p>
+                <div class="votes-tab" id="votes-tab">{% if session_user %}<a href="/link/{{ link.url }}/vote" class="{% if if_link %}to-vote{% else %}voted{% endif %}" id="vote-link-button"></a>{% endif %}<span class="tab-info">{{ link.upvotes }} &hearts;</span></div>
+                <div class="box-container">
+                    <div class="box">
+                        <h1>Comments</h1>
+                        <form action="/link/{{ link.url }}" method="GET" class="sort-comments">
+                            Sort comments by:
+                            <select name="sort" onchange="this.form.submit()">
+                                {% if sort == 'top' %}
+                                    <option value="top" selected>Most upvotes</option>
+                                    <option value="new">Newest first</option>
+                                {% else %}
+                                    <option value="top">Most upvotes</option>
+                                    <option value="new" selected>Newest first</option>
+                                {% endif %}
+                            </select>
+                        </form>
+                        {% if comments %}
+                            <ul>
+                                {% set if_comment = "" %}
+                                {% for comment in comments %}
+                                    <li>
+                                        {% set if_comment = if_comment_ . comment.id %}
+                                        <a href="/user/{{ comment.username }}" class="comment-user">@{{ comment.username }}</a>
+                                        <p>{{ comment.content }}</p>
+                                        <p class="comment-links"><span class="comment-votes">{{ comment.upvotes }} &hearts;</span><a href="/link/{{ comment.url }}/vote/{{ comment.id }}" class="vote-comment-button">{% if comment.voted %}Upvote{% else %}DownVote{% endif %}</a></p>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="nothing">No comments on this post matey!</p>
+                        {% endif %}
+                    </div>
+                    {% if session_user %}
+                        <form class="create-comment" name="new-comment-form" method="POST">
+                            <textarea name="content" placeholder="Create new comment" id="new-comment" type="text"></textarea>
+                            <p class="press-enter-comment">Press enter to post comment</p>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if session_user %}
+        <div id="new-popup">
+            <div class="popup-overlay"></div>
+            <div class="popup-content">
+                <form class="form-container" action="/link/create" method="POST">
+                    <h1>+ New Discussion</h1>
+                    <div class="form">
+                        <input type="text" name="title" placeholder="Title for discussion">
+                        <input type="text" name="tags" placeholder="Insert tags as #tagName">
+                        <input type="hidden" name="url" id="url" value="">
+                        <input type="submit" value="Create"><input type="button" value="Cancel" id="close-new-popup">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="/assets/javascript/new-popup.js"></script>
+        <script type="text/javascript" src="/assets/javascript/new-comment.js"></script>
+        <script type="text/javascript" src="/assets/javascript/votes-ajax.js"></script>
+    {% endif %}
+</body>
+</html>

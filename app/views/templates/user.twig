@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@{{ user.username }}'s Readit</title>
+    <link rel="stylesheet" href="/assets/stylesheet/main.css">
+    <link rel="stylesheet" href="/assets/stylesheet/forms.css">
+    <link rel="stylesheet" href="/assets/stylesheet/user.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="main-content">
+        <div class="header">
+            <div class="container">
+                <a href="/" class="logo">Readit</a>
+                <div class="links">
+                    <a href="/">Home</a>
+                        {% if session_user %}
+                            <a href="/feed">Personal Feed</a>
+                            <a href="/user/{{ session_user }}">@{{ session_user }}</a>
+                            <a href="/user/logout">Logout</a>
+                            <a href="#" class="button" id="new-button">+ New</a>
+                        {% else %}
+                            <a href="/user/signin" class="button">Sign in</a>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container">
+                <div class="user">
+                    <div class="content">
+                        <h2>{{ user.username }}</h2>
+                        <p class="follow-tab">{% if session_user %}{% if session_user != user.username %}<a href="/user/{{ user.username }}/follow" class="{% if if_following %}following{% else %}not-follow{% endif %}" id="follow-button"></a>{% endif %}{% endif %}<span class="tab-info" id="followers">{{ followers }} followers</span><span class="tab-info">{{ following }} following</span></p>
+                        <p><span class="stars">{% for i in range(1, rating.rating, 1) %}
+                                &starf;
+                        {% endfor %}</span><span class="score">{{ rating.score }} Points</span></p>
+                        <div class="box">
+                            <h1>My Links</h1>
+                            {% if links %}
+                                <ul>
+                                    {% for link in links %}
+                                        <li>
+                                            <a class="title" href="/link/{{ link.url }}">{{ link.title }}</a>
+                                            <p class="details"><span class="votes">{{ link.upvotes }} &hearts;</span></p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="nothing">Nothing to show here, go ahead and create a new link :-)</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebox">
+                            <h1>My comments</h1>
+                            {% if comments %}
+                                <ul>
+                                    {% for comment in comments %}
+                                        <li>
+                                            <a class="title" href="/link/{{ comment.url }}">{{ comment.content }}</a>
+                                            <span class="votes">{{ comment.upvotes }} &hearts;</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="nothing">Oh no! You commented on nothing...</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if session_user %}
+        <div id="new-popup">
+            <div class="popup-overlay"></div>
+            <div class="popup-content">
+                <form class="form-container" action="/link/create" method="POST">
+                    <h1>+ New Discussion</h1>
+                    <div class="form">
+                        <input type="text" name="title" placeholder="Title for discussion">
+                        <input type="hidden" name="url" id="url" value="">
+                        <input type="text" name="tags" placeholder="Insert tags as #tagName">
+                        <input type="submit" value="Create"><input type="button" value="Cancel" id="close-new-popup">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="/assets/javascript/user-ajax.js"></script>
+        <script type="text/javascript" src="/assets/javascript/new-popup.js"></script>
+    {% endif %}
+</body>
+</html>

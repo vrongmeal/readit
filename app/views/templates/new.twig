@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Readit</title>
+    <link rel="stylesheet" href="/assets/stylesheet/main.css">
+    <link rel="stylesheet" href="/assets/stylesheet/forms.css">
+</head>
+<body>
+    <div id="main-content">
+        <div class="header">
+            <div class="container">
+                <a href="/" class="logo">Readit</a>
+                <div class="links">
+                        <a href="/">Home</a>
+                    {% if session_user %}
+                        <a href="/feed">Personal Feed</a>
+                        <a href="/user/{{ session_user }}">@{{ session_user }}</a>
+                        <a href="/user/logout">Logout</a>
+                        <a href="#" class="button" id="new-button">+ New</a>
+                    {% else %}
+                        <a href="/user/signin" class="button">Sign in</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container">
+                <div class="box">
+                    <h1>New Links</h1>
+                    <ul>
+                        {% for link in links %}
+                            <li>
+                                <a class="title" href="/link/{{ link.url }}">{{ link.title }}</a>
+                                <p class="details"><a href="/user/{{ link.username }}" class="user">@{{ link.username }}</a><span class="votes">{{ link.upvotes }} &hearts;</span></p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if session_user %}
+        <div id="new-popup">
+            <div class="popup-overlay"></div>
+            <div class="popup-content">
+                <form class="form-container" action="/link/create" method="POST">
+                    <h1>+ New Discussion</h1>
+                    <div class="form">
+                        <input type="text" name="title" placeholder="Title for discussion">
+                        <input type="text" name="tags" placeholder="Insert tags as #tagName">
+                        <input type="hidden" name="url" id="url" value="">
+                        <input type="submit" value="Create"><input type="button" value="Cancel" id="close-new-popup">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="/assets/javascript/new-popup.js"></script>
+    {% endif %}
+</body>
+</html>

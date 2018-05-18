@@ -1,0 +1,137 @@
+.link {
+    display: block;
+}
+.link h2 {
+    font-size: 3rem;
+    margin: 0 0 1.5rem;
+    font-weight: 300;
+    color: rgb(62, 0, 62);
+    display: block;
+}
+.link .user {
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline dotted #777;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.link .user:hover {
+    text-decoration: underline solid #000;
+}
+.link .votes-tab {
+    display: inline-block;
+    margin: 0 0 1.5rem;
+}
+.votes-tab a {
+    padding: .5rem .75rem;
+    text-decoration: none;
+    border-radius: .25rem;
+    opacity: .85;
+    text-align: center;
+    width: 7rem;
+    display: inline-block;
+    margin-right: .5rem;
+}
+.votes-tab a.to-vote {
+    color: #f9f9f9;
+    background: rgb(62, 0, 62);
+}
+.to-vote::after {
+    content: "Upvote";
+}
+.votes-tab a.voted {
+    color: #f9f9f9;
+    background: rgb(252, 0, 62);
+}
+.voted::after {
+    content: "Voted";
+}
+.votes-tab a:hover, .votes-tab a:focus {
+    opacity: 1;
+}
+.voted:hover::after {
+    content: "DownVote";
+}
+.votes-tab .tab-info {
+    padding: .5rem .75rem;
+    display: inline-block;
+    background: #ccc;
+    color: #000;
+    border-radius: .25rem;
+}
+.box-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.box-container .box {
+    width: 63%;
+}
+.box li .comment-user {
+    color: #777;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: .5rem;
+    text-decoration: underline dashed;
+}
+.box li .comment-user:hover {
+    text-decoration: underline solid #000;
+}
+.comment-links {
+    margin: .5rem 0;
+    color: #555;
+    font-size: .9rem;
+}
+.comment-links span::after {
+    content: "/";
+    margin: 0 .5rem;
+}
+.comment-links a {
+    color: rgb(62, 0, 62);
+    text-decoration: none;
+}
+.comment-links a:hover {
+    text-decoration: underline;
+}
+.sort-comments {
+    padding: .5rem .75rem;
+    width: 100%;
+    background: #eee;
+}
+.box-container .create-comment {
+    width: 33%;
+}
+.create-comment textarea {
+    padding: .75rem;
+    height: 6.5rem;
+    width: 100%;
+    display: block;
+    resize: none;
+    border-radius: .25rem;
+    border: .0625rem solid #aaa;
+    margin-bottom: .75rem;
+}
+.create-comment textarea:focus {
+    border-color: rgb(62, 0, 62);
+}
+.create-comment p {
+    font-size: .8rem;
+    color: #555;
+}
+.tags {
+    margin-bottom: .5rem;
+}
+.tags a {
+    display: inline-block;
+    padding: .25rem .5rem;
+    border-radius: .125rem;
+    border: .0625rem solid #ccc;
+    color: #444;
+    text-decoration: none;
+    margin-right: .3rem;
+}
+.tags a:hover, .tags a:focus {
+    background: #ddd;
+    color: rgb(62, 0, 62);
+    border-color: rgb(62, 0, 62);  
+}
